@@ -6,26 +6,26 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 const Navigate = () => {
     return (
-    <div className='nav-bar'>
+    <div className='sidebar'>
         <div className='nav-home'>
             <NavLink exact="true" activeclassname="active" to="/">
-            <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
+            <FontAwesomeIcon icon={faHome} className='faHome'/>
             </NavLink>
         </div>
         <ul>
             <li>
                 <a target="blank" rel='noreferrer' href="https://www.linkedin.com/in/angelinaezhou/">
-                    <FontAwesomeIcon icon={faLinkedin} color='#4d4d4e' />
+                    <FontAwesomeIcon icon={faLinkedin}/>
                 </a>
             </li>
             <li>
                 <a target="blank" rel='noreferrer' href="https://www.linkedin.com/in/angelinaezhou/">
-                    <FontAwesomeIcon icon={faGithub} color='#4d4d4e' />
+                    <FontAwesomeIcon icon={faGithub}/>
                 </a>
             </li>
             <li>
                 <a target="blank" rel='noreferrer' href="https://www.linkedin.com/in/angelinaezhou/">
-                    <FontAwesomeIcon icon={faInstagram} color='#4d4d4e' />
+                    <FontAwesomeIcon icon={faInstagram}/>
                 </a>
             </li>
         </ul>

@@ -1,7 +1,7 @@
 import './Sidebar.scss'
 import { NavLink } from 'react-router-dom'
 import blob from '../assets/images/blob.png'; 
-import blobglow from '../assets/images/blob1glow.png'
+import blobglow from '../assets/images/blob1glow.png';
 import blob2 from '../assets/images/blob2.png'; 
 import blob2glow from '../assets/images/blob2glow.png'; 
 import blob3 from '../assets/images/blob3.png';
@@ -11,7 +11,6 @@ const Sidebar = () => (
     <div className='nav-bar'>
 
         <nav className="main-nav">
-            
             <div className='nav-about'><NavLink exact="true" activeclassname="active" className="about-link" to="/about">
                 <div className='about-icon'>
                     <img className='about' src={blob} alt="about" />

@@ -1,12 +1,6 @@
 
-html {
-  fontsize: 62.5%; 
-}
-
-
 body {
   margin: 0;
-  font: 300 11px/1.4 'Helvetica Neue', 'sans-serif';
   color: #444; 
   background: #F7FCFF; 
   overflow: hidden;

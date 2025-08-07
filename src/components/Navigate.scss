@@ -1,76 +1,48 @@
-.nav-home {
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px; // Adjust width as needed
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    z-index: 1000;
+  }
+  
+  .nav-home {    
     a {
-        position: absolute; 
-        top: 20px; 
-        left: 20px; 
-        z-index: 1000; 
-        font-size: 24px; 
-    i {
-        transition: all 0.3s ease-out; 
+      display: block;
+      color: #4d4d4e;
+      font-size: 20px;
+      transition: 0.3s color ease;
+
+      &:hover {
+        color: #9CBEDE;
+      }
     }
-
-    &:hover {
-        color: #000000; 
-    }
-
-    svg {
-        opacity: 1; 
-        transition: opacity 0.3x ease-out; 
-    }
-
-    &::after {
-        content: 'HOME'; 
-        font-size: 9px; 
-        letter-spacing: 2px;
-        position: absolute; 
-        bottom: 10px; 
-        display: block; 
-        width: 100; 
-        text-align: center; 
-        opacity: 0; 
-        transition: all 0.3s ease-out; 
-    }
-
-    &:hover {
-        color: #000000; 
-
-        svg {
-            opacity: 0; 
-        }
-
-        &::after {
-            opacity: 1; 
-        }
-    }
-
-    &.active {
-        svg {
-            color: #6d7888; 
-        }
-    }
-    }
-}
-
-ul {
-    position: absolute; 
-    bottom: 20px; 
-    width: 100%; 
-    display: block; 
-    padding: 0; 
-    list-style: none; 
-    text-align: center;
-    margin: 0; 
-
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; // Space between social icons
+    
     li {
-        a {
-            padding: 7px 0; 
-            display: block;
-            font-size: 15px;
-            line-height: 16px; 
+      a {
+        display: block;
+        font-size: 15px;
+        color: #4d4d4e;
+        transition: color 0.3s ease;
+        
+        &:hover {
+          color: #9CBEDE;
         }
-
-        &:hover svg {
-            color: #ffd700; 
-        }
+      }
     }
-}
+  }

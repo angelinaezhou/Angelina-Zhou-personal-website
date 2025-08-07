@@ -1,0 +1,76 @@
+.text {
+    width: 522px;
+    height: 413px;
+    left: 134px;
+    top: 168px;
+    position: absolute;
+    left: 134px;
+    top: 168px;
+}
+
+.about-me-title {
+    width: 522px;
+    height: 131px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.about3 {
+    width: 131px;
+    height: 131px;
+    margin-left: 7px;
+}
+
+.about-me {
+    font-family: 'Poppins';
+    font-size: 32px;
+    font-weight: 600;
+    color: #9C6773;
+}
+
+.about-me-description {
+    margin-top: 12px;
+    font-family: 'Poppins';
+    font-size: 15px;
+    color: #794E58;
+    margin-left: 103px;
+    font-weight: 500;
+}
+
+.about-me-description p {
+    margin-bottom: 20px;
+  }
+
+.portrait {
+    width: 268px;
+    height: 349px;
+    position: absolute;
+    left: 850px;
+    top: 232px;
+    box-shadow: 0 4px 4px rgba(0, 0.3, 0.3, 0.3);
+    border-radius: 50px;
+    animation: fadeIn .5s linear both;
+    animation-delay: 0.2s;
+}
+
+.about1 {
+    width: 676px;
+    height: 676px;
+    position: absolute;
+    left: 1000px;
+    top: -391px;
+    animation: fadeIn 0.5s linear both;
+    animation-delay: 0.1s;
+}
+
+.about2 {
+    width: 657px;
+    height: 657px;;
+    position: absolute;
+    left: 1000px;
+    top: 450px;
+    transform: rotate(19deg);
+    animation: fadeIn 0.5s linear both;
+    animation-delay: 0.3s;
+}
