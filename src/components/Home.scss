@@ -11,6 +11,7 @@
         font-family: 'Poppins';
         font-size: 35px;
         color: rgb(140, 156, 171);
+        animation: fadeIn 0.3s linear both; 
     }
 
     .name {
@@ -24,4 +25,6 @@
         font-size: 15px;
         font-family: 'Poppins';
         letter-spacing: 1px;
+        animation: fadeIn 0.4s linear both; 
+        animation-delay: 0.1s;
     }

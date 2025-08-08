@@ -8,7 +8,7 @@ const Navigate = () => {
     return (
     <div className='sidebar'>
         <div className='nav-home'>
-            <NavLink exact="true" activeclassname="active" to="/">
+            <NavLink className={({ isActive }) => isActive ? 'active' : ''} to="/">
             <FontAwesomeIcon icon={faHome} className='faHome'/>
             </NavLink>
         </div>
@@ -19,12 +19,12 @@ const Navigate = () => {
                 </a>
             </li>
             <li>
-                <a target="blank" rel='noreferrer' href="https://www.linkedin.com/in/angelinaezhou/">
+                <a target="blank" rel='noreferrer' href="https://github.com/angelinaezhou">
                     <FontAwesomeIcon icon={faGithub}/>
                 </a>
             </li>
             <li>
-                <a target="blank" rel='noreferrer' href="https://www.linkedin.com/in/angelinaezhou/">
+                <a target="blank" rel='noreferrer' href="https://www.instagram.com/angelinaezhou/">
                     <FontAwesomeIcon icon={faInstagram}/>
                 </a>
             </li>

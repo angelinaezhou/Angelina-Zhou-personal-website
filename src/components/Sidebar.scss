@@ -1,10 +1,10 @@
 .top-right {
-    position: relative;
+    position: absolute;
     left: 980px; 
     width: 640px; 
-    bottom: 410px;
+    top: -378px;
     animation: fadeIn 1s linear both;
-    animation-delay: 0.5s;
+    animation-delay: 0.4s;
     
     .top, .top-glow {
         clip-path: circle(45%);
@@ -32,13 +32,13 @@
 }
 
 .bottom-right {
-    position: relative; 
+    position: absolute; 
     left: 1050px; 
     width: 600px; 
     height: auto;
     top: 530px; 
     animation: fadeIn 1s linear both;
-    animation-delay: 0.9s;
+    animation-delay: 0.8s;
 
     .bottom, .bottom-glow {
         clip-path: circle(45%);
@@ -74,34 +74,17 @@
     z-index: 3; 
     min-height: 500px;
     min-height: 500px; 
-
-    .logo { // this is the slobodan logo
-        display: block; 
-        padding: 8px 0; 
-    
-        img {
-            display: block; 
-            margin: 8px auto; 
-            width: 24px; 
-            height: auto; 
-
-            &.sub-logo {
-                width: 50px; 
-            }
-        }
-    }
+    position: fixed;
 
     .main-nav {
         .nav-about {
             left: 550px;
-            bottom: 380px;
-            aspect-ratio: 1/1;
-            display: inline-block; 
+            top: -144px;
             position: absolute; 
             z-index: 1; 
             top: 10; 
             animation: fadeIn 1s linear both;
-            animation-delay: 0.6s;
+            animation-delay: 0.5s;
 
             .about-link {
                 text-decoration: none; 
@@ -109,17 +92,12 @@
                 .about-icon {
                     clip-path: circle(45% at center);
                     pointer-events: auto;
-                    position: relative;
+                    position: absolute;
                     align-items: center; 
                     justify-content: center;
                     width: 590px; 
                     height: 590px; 
                     z-index: 1; 
-
-                    img {
-                        width: 100%; 
-                        display: block; 
-                    }
 
                     .about, .about-glow {
                         position: absolute; 
@@ -164,12 +142,10 @@
         .nav-projects {
             left: 610px; 
             top: 300px; 
-            aspect-ratio: 1/1;
-            display: inline-block;
             position: absolute; 
             top: -10; 
             animation: fadeIn 1s linear both;
-            animation-delay: 0.9s;
+            animation-delay: 0.7s;
 
             .projects-link {
                 text-decoration: none;
@@ -177,17 +153,13 @@
                 .projects-icon {
                     clip-path: circle(40% at center);
                     pointer-events: auto;
-                    position: relative; 
+                    position: absolute; 
                     justify-content: center;
                     align-items: center;
                     width: 620px; 
                     height: 600px; 
 
-                    img {
-                        width: 100%; 
-                    }
-
-                    .projects, .projects-glow {
+                    .projects-blob, .projects-glow {
                         width: 100%;
                         height: 100%;
                         position: absolute;
@@ -195,7 +167,7 @@
                         transition: opacity 0.3s ease-in-out;
                     }
 
-                    .projects {
+                    .projects-blob {
                         z-index: 3; 
                         opacity: 1;
                     }
@@ -229,12 +201,10 @@
         .nav-contact {
             left: 1010px; 
             top: 100px; 
-            aspect-ratio: 1/1;
-            display: inline-block;
             position: absolute;
             top: -10; 
             animation: fadeIn 1s linear both;
-            animation-delay: 0.7s;
+            animation-delay: 0.6s;
 
             .contact-link {
                 text-decoration: none;
@@ -243,7 +213,7 @@
                     clip-path: ellipse(40% 60% at 50% 50%);
                     -webkit-clip-path: ellipse(40% 60% at 50% 50%);
                     overflow: hidden;
-                    position: relative; 
+                    position: absolute; 
                     justify-content: center;
                     align-items: center;
                     width: 600px; 
@@ -254,7 +224,7 @@
                     width: 100%; 
                 }
 
-                .contact, .contact-glow {
+                .contact-me, .contact-glow {
                     width: 100%; 
                     height: 100%;
                     position: absolute; 
@@ -262,7 +232,7 @@
                     transition: opacity 0.3s ease-in-out; 
                 }
 
-                .contact {
+                .contact-me {
                     z-index: 0; 
                     opacity: 1;
                 }

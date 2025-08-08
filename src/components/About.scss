@@ -3,9 +3,10 @@
     height: 413px;
     left: 134px;
     top: 168px;
-    position: absolute;
+    position: fixed;
     left: 134px;
     top: 168px;
+    animation: fadeIn 0.5s linear both;
 }
 
 .about-me-title {
@@ -45,7 +46,7 @@
 .portrait {
     width: 268px;
     height: 349px;
-    position: absolute;
+    position: fixed;
     left: 850px;
     top: 232px;
     box-shadow: 0 4px 4px rgba(0, 0.3, 0.3, 0.3);
@@ -57,17 +58,18 @@
 .about1 {
     width: 676px;
     height: 676px;
-    position: absolute;
+    position: fixed;
     left: 1000px;
     top: -391px;
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.1s;
+
 }
 
 .about2 {
     width: 657px;
     height: 657px;;
-    position: absolute;
+    position: fixed;
     left: 1000px;
     top: 450px;
     transform: rotate(19deg);

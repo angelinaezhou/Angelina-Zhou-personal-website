@@ -1,4 +1,4 @@
-.projects-title {
+.contact-title {
     width: 548px;
     height: 128px;
     position: absolute;
@@ -9,36 +9,38 @@
     animation: fadeIn 0.5s linear both;
 }
 
-.project3 {
+.contact3 {
     width: 134px;
     height: 134px;
     margin-top: -3px;
 }
 
-.projects {
+.contact {
     font-family: 'Poppins';
     font-size: 32px;
     font-weight: 600;
-    color: #38889C;
+    color: #927BA4;
     margin-left: 15px;
 }
 
-.projects-grid {
-    width: 979px;
-    height: 236px;
-    gap: 30px;
-    left: 200px;
-    top: 300px;
+.links-grid {
+    width: 880px;
+    height: 230px;
+    gap: 10px;
+    left: 250px;
+    top: 320px;
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 9px 6px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: start;
+    align-items: start;
+    padding: 10px 10px;
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.3s;
 }
 
-.project1 {
+.contact1 {
     width: 680px;
     height: 680px;
     left: 950px;
@@ -48,12 +50,12 @@
     animation-delay: 0.2s;
 }
 
-.project2 {
+.contact2 {
     width: 688px;
     height: 688px;
     transform: rotate(19deg);
-    left: 1000px;
-    top: 450px;
+    left: 970px;
+    top: 400px;
     position: fixed;
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.4s;
