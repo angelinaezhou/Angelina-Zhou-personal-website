@@ -7,6 +7,8 @@
     border: 4px #DFEFF5 solid;
     transition: all 0.3s ease;
     cursor: pointer;
+    display: block;
+    text-decoration: none;
 
     &:hover {
         box-shadow: 0 8px 10px rgba(8, 84, 119, 0.4);

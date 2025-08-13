@@ -1,3 +1,203 @@
+// Fix 1: Move hover states to the correct elements and add cursor
+.nav-bar {
+    width: 80px; 
+    height: 100%; 
+    position: absolute; 
+    top: 0; 
+    z-index: 3; 
+    min-height: 500px;
+    position: fixed;
+
+    .main-nav {
+        .nav-about {
+            left: 550px;
+            top: -144px;
+            position: absolute; 
+            z-index: 1; 
+            animation: fadeIn 1s linear both;
+            animation-delay: 0.5s;
+
+            .about-link {
+                text-decoration: none; 
+                cursor: pointer; // Add cursor here
+
+                .about-icon {
+                    clip-path: circle(45% at center);
+                    pointer-events: auto;
+                    position: absolute;
+                    align-items: center; 
+                    justify-content: center;
+                    width: 590px; 
+                    height: 590px; 
+                    z-index: 1; 
+                    cursor: pointer; // Add cursor here too
+
+                    .about, .about-glow {
+                        position: absolute; 
+                        width: 100%; 
+                        height: 100%; 
+                        display: block; 
+                        transition: opacity 0.3s ease-in-out; 
+                    }
+
+                    .about {
+                        z-index: 0; 
+                        opacity: 1;
+                    }
+
+                    .about-glow {
+                        z-index: 1; 
+                        opacity: 0;
+                    }
+
+                    span {
+                        z-index: 100; 
+                        position: absolute; 
+                        top: 54%; 
+                        left: 50%; 
+                        transform: translate(-50%, -50%); 
+                        font-family: "Poppins"; 
+                        font-size: 14px; 
+                        color: #6d7888; 
+                        pointer-events: none; 
+                    }
+                }
+
+                // Move hover state to the link level
+                &:hover {
+                    .about-icon .about-glow {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .nav-projects {
+            left: 610px; 
+            top: 300px; 
+            position: absolute; 
+            animation: fadeIn 1s linear both;
+            animation-delay: 0.7s;
+
+            .projects-link {
+                text-decoration: none;
+                cursor: pointer; // Add cursor
+
+                .projects-icon {
+                    clip-path: circle(40% at center);
+                    pointer-events: auto;
+                    position: absolute; 
+                    justify-content: center;
+                    align-items: center;
+                    width: 620px; 
+                    height: 600px; 
+                    cursor: pointer; // Add cursor
+
+                    .projects-blob, .projects-glow {
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        display: block; 
+                        transition: opacity 0.3s ease-in-out;
+                    }
+
+                    .projects-blob {
+                        z-index: 3; 
+                        opacity: 1;
+                    }
+
+                    .projects-glow {
+                        z-index: 4;
+                        opacity: 0;
+                    }
+
+                    span {
+                        z-index: 10; 
+                        position: absolute; 
+                        top: 50%; 
+                        left: 45%; 
+                        transform: translate(-50%, -50%); // Fix: was missing 'translate'
+                        font-family: 'Poppins';
+                        font-size: 14px; 
+                        color: #6d7888;
+                        pointer-events: none;
+                    }
+                }
+
+                // Move hover state to the link level
+                &:hover {
+                    .projects-icon .projects-glow {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .nav-contact {
+            left: 1010px; 
+            top: 100px; 
+            position: absolute;
+            animation: fadeIn 1s linear both;
+            animation-delay: 0.6s;
+
+            .contact-link {
+                text-decoration: none;
+                cursor: pointer; // Add cursor
+
+                .contact-icon {
+                    clip-path: ellipse(40% 60% at 50% 50%);
+                    -webkit-clip-path: ellipse(40% 60% at 50% 50%);
+                    overflow: hidden;
+                    position: absolute; 
+                    justify-content: center;
+                    align-items: center;
+                    width: 600px; 
+                    height: 600px; 
+                    cursor: pointer; // Add cursor
+                }
+
+                .contact-me, .contact-glow {
+                    width: 100%; 
+                    height: 100%;
+                    position: absolute; 
+                    display: block;
+                    transition: opacity 0.3s ease-in-out; 
+                }
+
+                .contact-me {
+                    z-index: 0; 
+                    opacity: 1;
+                }
+
+                .contact-glow {
+                    z-index: 1; 
+                    opacity: 0;
+                }
+
+                span {
+                    z-index: 10;
+                    position: absolute; 
+                    top: 50%; 
+                    left: 45%; 
+                    transform: translate(-50%, -50%); // Fix: was missing 'translate'
+                    font-family: 'Poppins';
+                    font-size: 14px;
+                    color: #6d7888;
+                    pointer-events: none;
+                }
+
+                // Move hover state to the link level
+                &:hover {
+                    .contact-glow {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Keep the decorative blobs unchanged
 .top-right {
     position: absolute;
     left: 980px; 
@@ -62,204 +262,6 @@
     &:hover {
         .bottom-glow {
             opacity: 1;
-        }
-    }
-}
-
-.nav-bar {
-    width: 80px; 
-    height: 100%; 
-    position: absolute; 
-    top: 0; 
-    z-index: 3; 
-    min-height: 500px;
-    min-height: 500px; 
-    position: fixed;
-
-    .main-nav {
-        .nav-about {
-            left: 550px;
-            top: -144px;
-            position: absolute; 
-            z-index: 1; 
-            top: 10; 
-            animation: fadeIn 1s linear both;
-            animation-delay: 0.5s;
-
-            .about-link {
-                text-decoration: none; 
-
-                .about-icon {
-                    clip-path: circle(45% at center);
-                    pointer-events: auto;
-                    position: absolute;
-                    align-items: center; 
-                    justify-content: center;
-                    width: 590px; 
-                    height: 590px; 
-                    z-index: 1; 
-
-                    .about, .about-glow {
-                        position: absolute; 
-                        width: 100%; 
-                        height: 100%; 
-                        display: block; 
-                        transition: opacity 0.3s ease-in-out; 
-                    }
-
-                    .about {
-                        z-index: 0; 
-                        opacity: 1;
-                    }
-
-                    .about-glow {
-                        z-index: 1; 
-                        opacity: 0;
-                    }
-
-                    &:hover {
-                        .about-glow {
-                            clip-path: circle(45%);
-                            opacity: 1;
-                        }
-                    }
-
-                    span {
-                        z-index: 100; 
-                        position: absolute; 
-                        top: 54%; 
-                        left: 50%; 
-                        transform: translate(-50%, -50%); 
-                        font-family: "Poppins"; 
-                        font-size: 14px; 
-                        color: #6d7888; 
-                        pointer-events: none; 
-                    }
-                }
-            }
-        }
-
-        .nav-projects {
-            left: 610px; 
-            top: 300px; 
-            position: absolute; 
-            top: -10; 
-            animation: fadeIn 1s linear both;
-            animation-delay: 0.7s;
-
-            .projects-link {
-                text-decoration: none;
-
-                .projects-icon {
-                    clip-path: circle(40% at center);
-                    pointer-events: auto;
-                    position: absolute; 
-                    justify-content: center;
-                    align-items: center;
-                    width: 620px; 
-                    height: 600px; 
-
-                    .projects-blob, .projects-glow {
-                        width: 100%;
-                        height: 100%;
-                        position: absolute;
-                        display: block; 
-                        transition: opacity 0.3s ease-in-out;
-                    }
-
-                    .projects-blob {
-                        z-index: 3; 
-                        opacity: 1;
-                    }
-
-                    .projects-glow {
-                        z-index: 4;
-                        opacity: 0;
-                    }
-
-                    &:hover {
-                        .projects-glow {
-                            opacity: 1;
-                        }
-                    }
-
-                    span {
-                        z-index: 10; 
-                        position: absolute; 
-                        top: 50%; 
-                        left: 45%; 
-                        transform: (-50%, -50%);
-                        font-family: 'Poppins';
-                        font-size: 14px; 
-                        color: #6d7888;
-                        pointer-events: none;
-                    }
-                }
-            }
-        }
-
-        .nav-contact {
-            left: 1010px; 
-            top: 100px; 
-            position: absolute;
-            top: -10; 
-            animation: fadeIn 1s linear both;
-            animation-delay: 0.6s;
-
-            .contact-link {
-                text-decoration: none;
-
-                .contact-icon {
-                    clip-path: ellipse(40% 60% at 50% 50%);
-                    -webkit-clip-path: ellipse(40% 60% at 50% 50%);
-                    overflow: hidden;
-                    position: absolute; 
-                    justify-content: center;
-                    align-items: center;
-                    width: 600px; 
-                    height: 600px; 
-                }
-
-                img {
-                    width: 100%; 
-                }
-
-                .contact-me, .contact-glow {
-                    width: 100%; 
-                    height: 100%;
-                    position: absolute; 
-                    display: block;
-                    transition: opacity 0.3s ease-in-out; 
-                }
-
-                .contact-me {
-                    z-index: 0; 
-                    opacity: 1;
-                }
-
-                .contact-glow {
-                    z-index: 1; 
-                    opacity: 0;
-                }
-
-                &:hover {
-                    .contact-glow {
-                        opacity: 1;
-                    }
-                }
-
-                span {
-                    z-index: 10;
-                    position: absolute; 
-                    top: 50%; 
-                    left: 45%; 
-                    transform: (-50%, -50%);
-                    font-family: 'Poppins';
-                    font-size: 14px;
-                    color: #6d7888;
-                    pointer-events: none;
-                }
-            }
         }
     }
 }

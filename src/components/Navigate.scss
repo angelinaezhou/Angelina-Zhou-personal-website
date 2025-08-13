@@ -7,31 +7,72 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px;
     z-index: 1000;
   }
+
+  .nav {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 0;
+    left: 0px;
+    gap: 20px
+  }
   
-  .nav-home {    
-    a {
-      display: block;
+  .nav-home { 
       color: #4d4d4e;
       font-size: 20px;
       transition: 0.3s color ease;
+      cursor: pointer !important;
+
+      &:hover {
+        color: #9CBEDE;
+    }
+  }
+
+  .side-about {
+    color: #4d4d4e;
+      font-size: 20px;
+      transition: 0.3s color ease;
+      cursor: pointer;
 
       &:hover {
         color: #9CBEDE;
       }
-    }
+  }
+
+  .side-projects {
+    color: #4d4d4e;
+      font-size: 20px;
+      transition: 0.3s color ease;
+      cursor: pointer;
+
+      &:hover {
+        color: #9CBEDE;
+      }
+  }
+
+  .side-contacts {
+    color: #4d4d4e;
+      font-size: 20px;
+      transition: 0.3s color ease;
+      cursor: pointer;
+
+      &:hover {
+        color: #9CBEDE;
+      }
   }
   
   ul {
     list-style: none;
     padding: 0;
-    margin: 0;
-    margin-bottom: 40px;
+    margin-left: 30px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    gap: 15px; // Space between social icons
+    gap: 15px;
     
     li {
       a {
