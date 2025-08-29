@@ -18,7 +18,7 @@ const Contact = () => {
             <Link icon={faLinkedin} label='linkedin' url='https://www.linkedin.com/in/angelinaezhou' type='external'/>
             <Link icon={faGithub} label='github' url='https://github.com/angelinaezhou' type='external'/>
             <Link icon={faEnvelope} label='aezhou721@gmail.com' url='aezhou721@gmail.com' type='email'/>
-            <Link icon={faFile} label='my resume' url='../assets/images/contact-1.png' type='resume'/>
+            <Link icon={faFile} label='my resume' url='https://docs.google.com/document/d/1ux0soJkym4UQWiwEhkw9xiutfO40nkyJBrkwLlqYAhA/edit?usp=sharing' type='external'/>
         </div>
         <img src={contact1} className='contact1' />
         <img src={contact2} className='contact2' />

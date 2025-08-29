@@ -24,45 +24,139 @@
   .nav-home { 
       color: #4d4d4e;
       font-size: 20px;
-      transition: 0.3s color ease;
       cursor: pointer !important;
+      position: relative;
+      display: inline-block;
 
-      &:hover {
-        color: #9CBEDE;
-    }
+      .home-text {
+        opacity: 0;
+        font-size: 12px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.3s ease;
+        white-space: nowrap;
+        font-family: 'Poppins';
+      }
+
+      .faHome {
+        transition: 0.3s ease;
+      }
+
+      &:hover .faHome {
+        opacity: 0;
+        color: #adbcc9;
+      }
+
+      &:hover .home-text {
+        opacity: 1;
+        color: #adbcc9;;
+      }
   }
 
   .side-about {
     color: #4d4d4e;
-      font-size: 20px;
-      transition: 0.3s color ease;
-      cursor: pointer;
+    font-size: 20px;
+    cursor: pointer !important;
+    position: relative;
+    display: inline-block;
 
-      &:hover {
-        color: #9CBEDE;
-      }
+    .about-text {
+      opacity: 0;
+      font-size: 12px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.3s ease;
+      white-space: nowrap;
+      font-family: 'Poppins';
+    }
+
+    .faUser {
+      transition: 0.3s ease;
+    }
+
+    &:hover .faUser {
+      opacity: 0;
+      color: #adbcc9;
+    }
+
+    &:hover .about-text {
+      opacity: 1;
+      color: #adbcc9;;
+    }
   }
 
   .side-projects {
     color: #4d4d4e;
-      font-size: 20px;
-      transition: 0.3s color ease;
-      cursor: pointer;
+    font-size: 20px;
+    cursor: pointer !important;
+    position: relative;
+    display: inline-block;
 
-      &:hover {
-        color: #9CBEDE;
-      }
+    .projects-text {
+      opacity: 0;
+      font-size: 12px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.3s ease;
+      white-space: nowrap;
+      font-family: 'Poppins';
+      letter-spacing: 0px;
+      font-weight: 700px;
+    }
+
+    .faFolderOpen {
+      transition: 0.3s ease;
+    }
+
+    &:hover .faFolderOpen {
+      opacity: 0;
+      color: #adbcc9;
+    }
+
+    &:hover .projects-text {
+      opacity: 1;
+      color: #adbcc9;;
+    }
   }
 
   .side-contacts {
     color: #4d4d4e;
-      font-size: 20px;
-      transition: 0.3s color ease;
-      cursor: pointer;
+    font-size: 20px;
+    cursor: pointer !important;
+    position: relative;
+    display: inline-block;
 
-      &:hover {
-        color: #9CBEDE;
-      }
+    .contact-text {
+      opacity: 0;
+      font-size: 12px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.3s ease;
+      white-space: nowrap;
+      font-family: 'Poppins';
+    }
+
+    .faPaperPlane {
+      transition: 0.3s ease;
+    }
+
+    &:hover .faPaperPlane {
+      opacity: 0;
+      color: #adbcc9;
+    }
+
+    &:hover .contact-text {
+      opacity: 1;
+      color: #adbcc9;;
+    }
   }
   
   ul {
@@ -82,7 +176,7 @@
         transition: color 0.3s ease;
         
         &:hover {
-          color: #9CBEDE;
+          color: #adbcc9;
         }
       }
     }

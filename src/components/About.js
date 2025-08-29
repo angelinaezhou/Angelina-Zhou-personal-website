@@ -7,7 +7,6 @@ import portrait from '../assets/images/about_me.jpg'
 const About = () => {
     return (
         <>
-        <div className="text">
             <div className="about-me-title">
                 <img src={about3} className="about3" />
                 <div className="about-me">about me</div>
@@ -17,7 +16,6 @@ const About = () => {
             <p>My interests in technology and mathematics are diverse, making me passionate about bringing together computation, analytics, and product design.</p>
             <p>Off the clock, I stay inspired through figure skating, art, photography, and trying new foods!</p>
             </div>
-        </div>
         <img src={portrait} className="portrait"/>
         <img src={about1} className="about1"/>
         <img src={about2} className="about2"/>

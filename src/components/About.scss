@@ -1,20 +1,12 @@
-.text {
-    width: 522px;
-    height: 413px;
-    left: 134px;
-    top: 168px;
-    position: fixed;
-    left: 134px;
-    top: 168px;
-    animation: fadeIn 0.5s linear both;
-}
-
 .about-me-title {
-    width: 522px;
-    height: 131px;
-    margin: 0 auto;
+    width: 548px;
+    height: 128px;
+    position: absolute;
+    left: 131px;
+    top: 125px;
     display: flex;
     align-items: center;
+    animation: fadeIn 0.5s linear both;
 }
 
 .about3 {
@@ -31,9 +23,14 @@
 }
 
 .about-me-description {
+    width: 380px;
+    height: 200px;
+    left: 140px;
+    top: 230px;
+    position: fixed;
     margin-top: 12px;
     font-family: 'Poppins';
-    font-size: 15px;
+    font-size: 17px;
     color: #794E58;
     margin-left: 103px;
     font-weight: 500;

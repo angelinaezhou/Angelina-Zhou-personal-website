@@ -10,15 +10,19 @@ const Navigate = () => {
         <div className='nav'>
             <NavLink className="nav-home" to="/">
             <FontAwesomeIcon icon={faHome} className='faHome'/>
+            <span className='home-text'>HOME</span>
             </NavLink>
             <NavLink className="side-about" to="/about">
             <FontAwesomeIcon icon={faUser} className='faUser'/>
+            <span className='about-text'>ABOUT ME</span>
             </NavLink>
             <NavLink className="side-projects" to="/projects">
             <FontAwesomeIcon icon={faFolderOpen} className='faFolderOpen'/>
+            <span className='projects-text'>PROJECTS</span>
             </NavLink>
             <NavLink className="side-contacts" to="/contact">
             <FontAwesomeIcon icon={faPaperPlane} className='faPaperPlane'/>
+            <span className='contact-text'>CONTACT</span>
             </NavLink>
         </div>
         <ul>

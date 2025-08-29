@@ -15,9 +15,9 @@ const Projects = () => {
             <div className='projects'>projects</div>
         </div>
         <div className='projects-grid'>
-            <Project image={skateIQvisual} title='skateIQ - Full Stack ML Web App' description='Figure skating jump classifier utilizing pose data, computer vision, live playback and analysis.' link="https://codengelina.netlify.app" />
+            <Project image={skateIQvisual} title='skateIQ - Full Stack ML Web App' description='Figure skating jump classifier utilizing pose data, computer vision, live playback and analysis.' link="https://skateiq.vercel.app" />
             <Project image={codengelina} title='CODENGELINA - React Firebase Web App' description='Real-time multiplayer word guessing game with responsive design and live state synchronization.' link="https://codengelina.netlify.app" />
-            <Project image={illinoiskating} title='IllinoiSkating - Web Design Team' description='Official site of all things Illinois figure skating.' link="https://codengelina.netlify.app"/>
+            <Project image={illinoiskating} title='IllinoiSkating - Website Design Team' description='Official site of all things Illinois figure skating.' link="https://www.illinoiskating.com"/>
         </div>
         <img src={project1} className='project1' />
         <img src={project2} className='project2' />
