@@ -12,8 +12,8 @@ const About = () => {
                 <div className="about-me">about me</div>
             </div>
             <div className="about-me-description">
-            <p>I am a sophomore majoring in Computer Science + Statistics, minoring in Data Science, and I'm originally from San Diego, California.</p>
-            <p>My interests in technology and mathematics are diverse, making me passionate about bringing together computation, analytics, and product design.</p>
+            <p>I am a sophomore at UIUC majoring in Computer Science + Statistics, along with minors in in Data Science and Psychology, and I'm originally from San Diego, California!</p>
+            <p>My interests in technology and mathematics are diverse, making me passionate about bringing together computation, analytics, product design, and software development.</p>
             <p>Off the clock, I stay inspired through figure skating, art, photography, and trying new foods!</p>
             </div>
         <img src={portrait} className="portrait"/>

@@ -24,15 +24,13 @@
 }
 
 .projects-grid {
-    width: 979px;
-    height: 236px;
+    display: grid;
+    grid-template-columns: repeat(3, (1fr));
+    grid-template-rows: repeat(2, auto);
     gap: 30px;
     left: 200px;
-    top: 300px;
+    top: 250px;
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 9px 6px;
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.3s;
@@ -53,7 +51,7 @@
     height: 688px;
     transform: rotate(19deg);
     left: 1000px;
-    top: 450px;
+    top: 470px;
     position: fixed;
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.4s;

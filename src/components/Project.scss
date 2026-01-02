@@ -1,10 +1,12 @@
 .item {
-    width: 315px;
-    height: 228px;
+    position: relative;
+    width: 275px;
+    height: 210px;
     border-radius: 20px;
     box-shadow: 0 6px 6px rgba(5, 66, 86, 0.3);
     overflow: hidden;
-    border: 4px #DFEFF5 solid;
+    // border: 4px #DFEFF5 solid;
+    border: 8px #FFFFFF solid;
     transition: all 0.3s ease;
     cursor: pointer;
     display: block;
@@ -18,26 +20,26 @@
 
 .visual {
     width: 100%;
-    height: 157px;
+    height: 140px;
     object-fit: cover;
-    margin: 0;
-    padding: 0;
     display: block;
 }
 
 .visual-description {
+    position: absolute;
     width: 100%;
     height: 71px;
-    margin: 0;
-    padding: 0;
-    background-color: #DFEFF5;
+    // background-color: #DFEFF5;
+    background-color: #FFFFFF;
     display: block;
+    box-shadow: 0 -6px 6px -2px rgba(157, 157, 157, 0.18);
+    z-index: 10;
 }
 
 .visual-description-text {
     font-family: 'Poppins';
-    color: #478295;
-    margin-left: 17px;
+    color: #38889C;
+    margin-left: 8px;
     padding-top: 10px;
 }
 
