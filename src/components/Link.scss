@@ -69,7 +69,7 @@ $link-shine: #ffffff;      // color of the gleam streak
                 transparent 60%) no-repeat,
             linear-gradient(90deg, #a48fb5, $link-accent 50%, #b9a4c9);
         background-size: 250% 100%, 100% 100%;
-        background-position: 150% 0, 0 0;
+        background-position: 100% 0, 0 0;
         box-shadow: 0 0 6px rgba(185, 164, 201, 0.0);
         transform: scaleX(0);
         transform-origin: left;
@@ -82,15 +82,18 @@ $link-shine: #ffffff;      // color of the gleam streak
     .link:focus-visible &::after {
         transform: scaleX(1);
         box-shadow: 0 0 8px rgba(185, 164, 201, 0.7);
-        animation: link-gleam 2.2s ease-in-out 0.3s infinite;
+        // 1.4s per cycle: ~0.8s sweep, then a short rest. Starts right away.
+        animation: link-gleam 1.4s ease-in-out infinite;
     }
 }
 
-// Moves the white streak from right of the line to left of it, then rests.
+// Sweeps the white streak across the underline from left to right, then
+// rests. 100% → 0% is exactly "just off the left edge" → "just off the
+// right edge", so the streak is visible for the whole sweep.
 @keyframes link-gleam {
-    0%   { background-position: 150% 0, 0 0; }
-    55%  { background-position: -50% 0, 0 0; }
-    100% { background-position: -50% 0, 0 0; }
+    0%   { background-position: 100% 0, 0 0; }
+    60%  { background-position: 0% 0, 0 0; }
+    100% { background-position: 0% 0, 0 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
