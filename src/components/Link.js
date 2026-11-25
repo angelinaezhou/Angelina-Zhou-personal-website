@@ -1,21 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Link.scss'
 
+// type: 'email' → opens the visitor's email app; anything else opens `url`
+// in a new tab.
 const Link = ({icon, label, url, type}) => {
-    const handleClick = () => {
-        if (type === 'email') {
-            window.location.href = `mailto:${url}`;
-        } else if (type === 'external' || type === 'resume') {
-            window.open(url, '_blank', 'noopener,noreferrer');
-        }
-    };
+    const isEmail = type === 'email';
     return (
-        <>
-            <div className="link" onClick={handleClick}>
-                <FontAwesomeIcon icon={icon} className='leading-icon'/>
-                <div className="link-name">{label}</div>
-            </div>
-        </>
+        <a
+            className="link"
+            href={isEmail ? `mailto:${url}` : url}
+            target={isEmail ? undefined : '_blank'}
+            rel={isEmail ? undefined : 'noopener noreferrer'}
+        >
+            <FontAwesomeIcon icon={icon} className='leading-icon'/>
+            <span className="link-name">{label}</span>
+        </a>
     )
 }
 

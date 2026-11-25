@@ -1,8 +1,10 @@
+@use '../scale' as *;
+
 .sidebar {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 80px; // Adjust width as needed
+    left: s(12px);
+    width: s(80px); // Adjust width as needed
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -15,22 +17,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: s(30px);
     padding: 0;
     left: 0px;
-    gap: 20px
+    gap: s(20px)
   }
   
   .nav-home { 
       color: #4d4d4e;
-      font-size: 20px;
+      font-size: s(20px);
       cursor: pointer !important;
       position: relative;
       display: inline-block;
 
       .home-text {
         opacity: 0;
-        font-size: 12px;
+        font-size: s(12px);
         position: absolute;
         top: 50%;
         left: 50%;
@@ -57,14 +59,14 @@
 
   .side-about {
     color: #4d4d4e;
-    font-size: 20px;
+    font-size: s(20px);
     cursor: pointer !important;
     position: relative;
     display: inline-block;
 
     .about-text {
       opacity: 0;
-      font-size: 12px;
+      font-size: s(12px);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -91,14 +93,14 @@
 
   .side-projects {
     color: #4d4d4e;
-    font-size: 20px;
+    font-size: s(20px);
     cursor: pointer !important;
     position: relative;
     display: inline-block;
 
     .projects-text {
       opacity: 0;
-      font-size: 12px;
+      font-size: s(12px);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -127,14 +129,14 @@
 
   .side-contacts {
     color: #4d4d4e;
-    font-size: 20px;
+    font-size: s(20px);
     cursor: pointer !important;
     position: relative;
     display: inline-block;
 
     .contact-text {
       opacity: 0;
-      font-size: 12px;
+      font-size: s(12px);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -159,19 +161,21 @@
     }
   }
   
-  ul {
+  // Social links at the bottom of the sidebar. (Scoped to .sidebar so it
+  // doesn't restyle other lists on the site.)
+  .sidebar ul {
     list-style: none;
     padding: 0;
-    margin-left: 30px;
-    margin-bottom: 30px;
+    margin-left: s(30px);
+    margin-bottom: s(40px);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: s(15px);
     
     li {
       a {
         display: block;
-        font-size: 15px;
+        font-size: s(15px);
         color: #4d4d4e;
         transition: color 0.3s ease;
         

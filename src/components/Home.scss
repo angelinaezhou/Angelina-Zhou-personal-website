@@ -9,7 +9,9 @@
     
     .intro {
         font-family: 'Poppins';
-        font-size: 35px;
+        // Sizes are multiplied by --page-scale (set in Home.js) so the text
+        // grows and shrinks along with the blobs.
+        font-size: calc(35px * var(--page-scale, 1));
         color: rgb(140, 156, 171);
         animation: fadeIn 0.3s linear both; 
     }
@@ -22,9 +24,10 @@
         top: 100px;
         color: #8d8d8d; 
         font-weight: 400;
-        font-size: 15px;
+        font-size: calc(15px * var(--page-scale, 1));
         font-family: 'Poppins';
-        letter-spacing: 1px;
-        animation: fadeIn 0.4s linear both; 
+        letter-spacing: calc(1px * var(--page-scale, 1));
+        animation: fadeIn 0.4s linear both;
         animation-delay: 0.1s;
+        width: calc(400px * var(--page-scale, 1));
     }

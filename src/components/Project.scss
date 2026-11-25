@@ -1,35 +1,50 @@
+@use '../scale' as *;
+
 .item {
+    width: s(440px);
+    flex-shrink: 0;
+    box-sizing: border-box;
     position: relative;
-    width: 275px;
-    height: 210px;
-    border-radius: 20px;
     box-shadow: 0 6px 6px rgba(5, 66, 86, 0.3);
     overflow: hidden;
     // border: 4px #DFEFF5 solid;
-    border: 8px #FFFFFF solid;
+    border: s(10px) #FFFFFF solid;
     transition: all 0.3s ease;
     cursor: pointer;
-    display: block;
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
 
     &:hover {
         box-shadow: 0 8px 10px rgba(8, 84, 119, 0.4);
         transform: translateY(-4px);
     }
+
+    // Cards without a link: not clickable, so no pointer or hover lift.
+    &.item-static {
+        cursor: default;
+
+        &:hover {
+            box-shadow: 0 6px 6px rgba(5, 66, 86, 0.3);
+            transform: none;
+        }
+    }
 }
 
 .visual {
+    height: s(250px);
     width: 100%;
-    height: 140px;
-    object-fit: cover;
     display: block;
+    // Keep each image's original proportions: it fills the image box and
+    // any extra is trimmed evenly from the edges instead of stretching.
+    // Change `center` to e.g. `top` to choose which part stays visible.
+    object-fit: cover;
+    object-position: center;
 }
 
 .visual-description {
-    position: absolute;
-    width: 100%;
-    height: 71px;
-    // background-color: #DFEFF5;
+    // Grows to fit the date and pills.
+    flex: 1;
     background-color: #FFFFFF;
     display: block;
     box-shadow: 0 -6px 6px -2px rgba(157, 157, 157, 0.18);
@@ -39,18 +54,50 @@
 .visual-description-text {
     font-family: 'Poppins';
     color: #38889C;
-    margin-left: 8px;
-    padding-top: 10px;
+    padding: s(14px) s(12px) s(12px);
 }
 
 .description-title {
-    font-size: 13px;
+    font-size: s(18px);
     font-weight: 550;
 }
 
+.description-date {
+    margin-top: s(2px);
+    font-size: s(12px);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: #7fb3c0;
+}
+
 .description-description {
-    padding-top: 2px;
-    font-size: 10px;
+    padding-top: s(6px);
+    font-size: s(13px);
     font-weight: 400;
     line-height: 150%;
+}
+
+// Tech stack pills
+.tech-pills {
+    list-style: none;
+    margin: s(12px) 0 0;
+    padding: 0;
+    display: flex;
+    // Navigate.scss has a site-wide `ul` rule that stacks items in a column;
+    // this keeps the pills side by side.
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: s(6px);
+}
+
+.tech-pill {
+    padding: s(3px) s(10px);
+    border-radius: 999px;
+    background-color: #E6F3F7;
+    border: 1px solid #cfe6ee;
+    color: #38889C;
+    font-size: s(11px);
+    font-weight: 500;
+    line-height: 1.5;
+    white-space: nowrap;
 }

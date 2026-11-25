@@ -1,0 +1,25 @@
+// s(40px) → 40px at the design window size (see src/hooks/usePageScale.js),
+// and proportionally bigger or smaller on other screens.
+// Usage:  @use '../scale' as *;   then   width: s(260px);
+// For negative values write s(-200px), not -s(200px).
+@function s($px) {
+    @return calc(#{$px} * var(--page-scale, 1));
+}
+
+// The design window size. Keep in sync with DESIGN_WIDTH / DESIGN_HEIGHT in
+// src/hooks/usePageScale.js.
+$design-width: 1512px;
+$design-height: 860px;
+
+// "Stage" positions: think of the page as a 1512×860 stage that's scaled to
+// fit the window and centered in it. stage-x(136px) / stage-y(124px) put
+// something at that spot on the stage, so elements placed this way keep the
+// same arrangement on any window shape (wide, tall, small, large).
+// Use these for `left` / `top` of the main content; use plain s() for sizes
+// and for decorations pinned to the window's edges.
+@function stage-x($px) {
+    @return calc((100vw - #{$design-width} * var(--page-scale, 1)) / 2 + #{$px} * var(--page-scale, 1));
+}
+@function stage-y($px) {
+    @return calc((100vh - #{$design-height} * var(--page-scale, 1)) / 2 + #{$px} * var(--page-scale, 1));
+}

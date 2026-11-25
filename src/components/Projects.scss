@@ -1,57 +1,110 @@
+@use '../scale' as *;
+
+// ─── Scrolling column settings ───────────────────────────────────────────────
+$proj-fade: 16%;          // how much of the top/bottom edge fades out
+$proj-space-top: 206px;    // space above the first card, on the stage (see _scale.scss)
+$proj-space-bottom: 206px; // space below the last card (less = less scrolling)
+$proj-card-gap: 56px;     // space between cards
+
 .projects-title {
-    width: 548px;
-    height: 128px;
+    width: s(548px);
+    height: s(128px);
     position: absolute;
-    left: 136px;
-    top: 124px;
+    left: stage-x(136px);
+    top: stage-y(124px);
     display: flex;
     align-items: center;
     animation: fadeIn 0.5s linear both;
 }
 
 .project3 {
-    width: 134px;
-    height: 134px;
-    margin-top: -3px;
+    width: s(134px);
+    height: s(134px);
+    margin-top: s(-3px);
 }
 
 .projects {
     font-family: 'Poppins';
-    font-size: 32px;
+    font-size: s(32px);
     font-weight: 600;
     color: #38889C;
-    margin-left: 15px;
+    margin-left: s(15px);
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, (1fr));
-    grid-template-rows: repeat(2, auto);
-    gap: 30px;
-    left: 200px;
-    top: 250px;
+// Short intro under the title.
+.projects-blurb {
     position: absolute;
-    padding: 9px 6px;
+    left: stage-x(160px);
+    top: stage-y(270px);
+    width: s(300px);
+    margin: 0;
+    font-family: 'Poppins';
+    font-size: s(16px);
+    font-weight: 500;
+    line-height: 1.6;
+    color: #4f8fa0;
     animation: fadeIn 0.5s linear both;
+    animation-delay: 0.15s;
+}
+
+// The middle column: scrolls vertically (from anywhere on the page, see
+// useWheelScroll), hidden scrollbar, top/bottom edges fade out via a mask.
+.projects-scroll {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    // Same spot on the stage as the title, so they never drift apart.
+    left: stage-x(514px);
+    width: s(575px);
+    z-index: 2;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    overscroll-behavior: contain;
+    // Scrolling always settles with a card centered ("snap to center").
+    scroll-snap-type: y mandatory;
+    animation: fadeIn 0.6s linear both;
     animation-delay: 0.3s;
+
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 $proj-fade, #000 (100% - $proj-fade), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 $proj-fade, #000 (100% - $proj-fade), transparent 100%);
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: s($proj-card-gap);
+    padding: stage-y($proj-space-top) 0 stage-y($proj-space-bottom);
+
+    // Each card is a snap point, centered in the column.
+    .item {
+        scroll-snap-align: center;
+        // Snap to each card in turn, even on a fast trackpad flick.
+        scroll-snap-stop: always;
+    }
 }
 
 .project1 {
-    width: 680px;
-    height: 680px;
-    left: 950px;
-    top: -370px;
+    width: s(800px);
+    aspect-ratio: 1;
+    right: s(-200px);
+    top: s(-350px);
     position: fixed;
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.2s;
 }
 
 .project2 {
-    width: 688px;
-    height: 688px;
+    width: s(800px);
+    aspect-ratio: 1;
     transform: rotate(19deg);
-    left: 1000px;
-    top: 470px;
+    right: s(-250px);
+    bottom: s(-300px);
     position: fixed;
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.4s;

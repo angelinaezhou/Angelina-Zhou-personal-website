@@ -1,61 +1,96 @@
+@use '../scale' as *;
+
+// Main content is placed on the scaled, centered "stage" (stage-x / stage-y,
+// see src/_scale.scss) so it keeps its arrangement on any window shape. The
+// chrome decorations are pinned to the window's corners instead.
+
 .contact-title {
-    width: 548px;
-    height: 128px;
+    width: s(548px);
+    height: s(128px);
     position: absolute;
-    left: 136px;
-    top: 124px;
+    left: stage-x(136px);
+    top: stage-y(124px);
     display: flex;
     align-items: center;
     animation: fadeIn 0.5s linear both;
 }
 
 .contact3 {
-    width: 134px;
-    height: 134px;
-    margin-top: -3px;
+    width: s(134px);
+    height: s(134px);
+    margin-top: s(-3px);
 }
 
 .contact {
     font-family: 'Poppins';
-    font-size: 32px;
+    font-size: s(32px);
     font-weight: 600;
     color: #927BA4;
-    margin-left: 15px;
+    margin-left: s(15px);
 }
 
-.links-grid {
-    width: 880px;
-    height: 230px;
-    gap: 10px;
-    left: 250px;
-    top: 320px;
+// Short line under the title.
+.contact-subtitle {
     position: absolute;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    justify-items: start;
-    align-items: start;
-    padding: 10px 10px;
+    left: stage-x(160px);
+    top: stage-y(275px);
+    font-family: 'Poppins';
+    font-size: s(16px);
+    font-weight: 500;
+    color: #9a88a8;
+    animation: fadeIn 0.5s linear both;
+    animation-delay: 0.15s;
+}
+
+// All links on one line, lined up with the subtitle above.
+// `gap` sets the space between links.
+.links-grid {
+    position: fixed;
+    left: stage-x(160px);
+    top: stage-y(350px);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: s(75px);
+    white-space: nowrap;
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.3s;
 }
 
+// "what i'm listening to:" + the Spotify / Last.fm card, below the links.
+.listening {
+    position: fixed;
+    left: stage-x(160px);
+    top: stage-y(470px);
+    animation: fadeIn 0.5s linear both;
+    animation-delay: 0.45s;
+}
+
+// Same look as .contact-subtitle.
+.listening-subtitle {
+    margin: 0 0 s(14px);
+    font-family: 'Poppins';
+    font-size: s(16px);
+    font-weight: 500;
+    color: #9a88a8;
+}
+
 .contact1 {
-    width: 680px;
-    height: 680px;
-    left: 950px;
-    top: -370px;
+    width: s(800px);
+    aspect-ratio: 1;
+    right: s(-200px);
+    top: s(-350px);
     position: fixed;
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.2s;
 }
 
 .contact2 {
-    width: 688px;
-    height: 688px;
+    width: s(800px);
+    aspect-ratio: 1;
     transform: rotate(19deg);
-    left: 970px;
-    top: 400px;
+    right: s(-250px);
+    bottom: s(-300px);
     position: fixed;
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.4s;

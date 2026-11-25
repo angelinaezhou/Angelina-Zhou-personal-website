@@ -1,73 +1,75 @@
+@use '../scale' as *;
+
 .about-me-title {
-    width: 548px;
-    height: 128px;
     position: absolute;
-    left: 131px;
-    top: 125px;
+    left: s(150px);
+    top: s(90px);
     display: flex;
     align-items: center;
     animation: fadeIn 0.5s linear both;
 }
 
 .about3 {
-    width: 131px;
-    height: 131px;
-    margin-left: 7px;
+    width: s(131px);
+    height: s(131px);
+    margin-left: s(7px);
 }
 
 .about-me {
     font-family: 'Poppins';
-    font-size: 32px;
+    font-size: s(32px);
     font-weight: 600;
     color: #9C6773;
 }
 
 .about-me-description {
-    width: 380px;
-    height: 200px;
-    left: 140px;
-    top: 230px;
+    padding-left: s(8px);
+    width: s(500px);
+    height: min-content;
+    left: s(140px);
+    top: s(230px);
+    align-items: left;
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    margin-top: 12px;
-    font-family: 'Poppins';
-    font-size: 17px;
-    color: #794E58;
-    margin-left: 103px;
-    font-weight: 500;
+    gap: s(8px);
 }
 
-.about-me-description p {
-    margin-bottom: 20px;
-  }
+.about-me-text {
+    font-family: 'Poppins';
+    font-size: s(16px);
+    color: #794E58;
+    font-weight: 500;
+    margin-top: s(12px);
+    animation: fadeIn 1s linear both;
+}
+
 
 .portrait {
-    width: 340px;
-    position: fixed;
-    left: 770px;
-    top: 170px;
+    width: s(250px);
     box-shadow: 0 4px 4px rgba(0, 0.3, 0.3, 0.3);
-    border-radius: 50px;
+    border-radius: s(50px);
     animation: fadeIn .5s linear both;
     animation-delay: 0.2s;
 }
 
 .about1 {
-    width: 676px;
-    height: 676px;
+    width: s(600px);
+    aspect-ratio: 1;
     position: fixed;
-    left: 1000px;
-    top: -391px;
+    right: s(-200px);
+    top: s(-350px);
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.1s;
 
 }
 
 .about2 {
-    width: 657px;
-    height: 657px;;
-    position: fixed;
-    left: 1000px;
-    top: 450px;
+    width: s(600px);
+    aspect-ratio: 1;
+    position: absolute;
+    right: s(-250px);
+    bottom: s(-250px);
     transform: rotate(19deg);
     animation: fadeIn 0.5s linear both;
     animation-delay: 0.3s;

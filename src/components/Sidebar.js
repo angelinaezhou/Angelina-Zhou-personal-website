@@ -7,7 +7,9 @@ import blob2glow from '../assets/images/blob2glow.png';
 import blob3 from '../assets/images/blob3.png';
 import blob3glow from '../assets/images/blob3glow.png';
 
-const Sidebar = () => (
+// Sizing: the blobs scale with --page-scale, which Home.js sets from the window size.
+const Sidebar = () => {
+  return (
   <div className='nav-bar'>
     <nav className="main-nav">
       <div className='nav-about'>
@@ -60,6 +62,7 @@ const Sidebar = () => (
       </div>
     </nav>
   </div>
-)
+  )
+}
 
 export default Sidebar

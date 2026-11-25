@@ -1,0 +1,269 @@
+@use '../scale' as *;
+
+$np-text: #7B6E7E;
+$np-accent: #927BA4;   // matches the "contact" title
+$np-muted: #a395ad;
+$np-page-bg: #f1f8fc;  // page background (shows through the spindle hole)
+
+$np-record: 150px;     // record diameter — change to resize the turntable
+$np-spin: 2.4s;        // time for one full turn (lower = faster)
+
+// Turntable + song info, side by side. No background — sits on the page.
+.now-playing {
+    margin-top: s(25px);
+    display: inline-flex;
+    align-items: center;
+    gap: s(26px);
+    font-family: 'Poppins';
+    text-decoration: none;
+    color: $np-text;
+    outline: none;
+
+    &:hover .np-title,
+    &:focus-visible .np-title {
+        color: $np-accent;
+    }
+
+    &:hover .np-vinyl,
+    &:focus-visible .np-vinyl {
+        box-shadow:
+            0 s(10px) s(24px) rgba(70, 45, 90, 0.38),
+            inset 0 0 0 s(2px) #0d0c0f;
+    }
+}
+
+// Placeholder while the first request loads (keeps the space reserved).
+.now-playing-loading {
+    width: s($np-record + 30px);
+    height: s($np-record);
+}
+
+// ─── Turntable ───────────────────────────────────────────────────────────────
+.np-turntable {
+    position: relative;
+    flex-shrink: 0;
+    // Extra width on the right for the tone arm.
+    width: s($np-record + 30px);
+    height: s($np-record);
+}
+
+.np-vinyl,
+.np-sheen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: s($np-record);
+    height: s($np-record);
+    border-radius: 50%;
+}
+
+// The record: fine grooves, a dark rim, and a soft drop shadow.
+.np-vinyl {
+    background:
+        repeating-radial-gradient(circle at center,
+            #1d1b20 0,
+            #1d1b20 1.1%,
+            #2b2830 1.5%,
+            #1d1b20 1.9%),
+        #1d1b20;
+    box-shadow:
+        0 s(8px) s(20px) rgba(70, 45, 90, 0.3),
+        inset 0 0 0 s(2px) #0d0c0f;
+    transition: box-shadow 0.3s ease;
+    animation: np-spin $np-spin linear infinite;
+    // Paused unless a song is playing; resumes from where it stopped.
+    animation-play-state: paused;
+
+    .is-playing & {
+        animation-play-state: running;
+    }
+}
+
+// Center label: the album art, with a spindle hole in the middle.
+.np-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 38%;
+    height: 38%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    background: #efe8f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 s(3px) #141216;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    span {
+        color: $np-accent;
+        font-size: s(20px);
+    }
+
+    // Spindle hole
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: s(7px);
+        height: s(7px);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: $np-page-bg;
+        box-shadow: inset 0 0 s(2px) rgba(0, 0, 0, 0.4);
+    }
+}
+
+// Glossy reflection on top of the record. It doesn't rotate, so the light
+// stays put while the grooves turn underneath — like a real record.
+.np-sheen {
+    pointer-events: none;
+    background: conic-gradient(from 30deg,
+        transparent 0deg,
+        rgba(255, 255, 255, 0.10) 25deg,
+        transparent 55deg,
+        transparent 180deg,
+        rgba(255, 255, 255, 0.07) 210deg,
+        transparent 240deg);
+    // Keep the label (album art) free of the reflection.
+    -webkit-mask-image: radial-gradient(circle, transparent 0 20%, #000 21%);
+    mask-image: radial-gradient(circle, transparent 0 20%, #000 21%);
+}
+
+// Tone arm: pivots from the top right. Swings onto the record while playing,
+// rests just off it otherwise.
+.np-arm {
+    position: absolute;
+    top: s(8px);
+    left: s($np-record + 8px);
+    width: s(4px);
+    height: s($np-record * 0.64);
+    border-radius: s(2px);
+    background: linear-gradient(90deg, #8e8895, #e9e5ec 45%, #a7a1ad);
+    transform-origin: 50% 0;
+    transform: rotate(4deg);
+    transition: transform 0.8s cubic-bezier(0.34, 1.2, 0.64, 1);
+
+    .is-playing & {
+        transform: rotate(27deg);
+    }
+
+    // Pivot
+    &::before {
+        content: '';
+        position: absolute;
+        top: s(-8px);
+        left: 50%;
+        width: s(16px);
+        height: s(16px);
+        transform: translateX(-50%);
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #ffffff, #c9c3cf 45%, #8e8895);
+        box-shadow: 0 s(1px) s(3px) rgba(0, 0, 0, 0.3);
+    }
+}
+
+// Needle head at the end of the arm.
+.np-arm-head {
+    position: absolute;
+    bottom: s(-10px);
+    left: 50%;
+    width: s(9px);
+    height: s(14px);
+    transform: translateX(-50%);
+    border-radius: s(2px);
+    background: linear-gradient(90deg, #4a4550, #77707e 50%, #4a4550);
+}
+
+@keyframes np-spin {
+    to { transform: rotate(360deg); }
+}
+
+// ─── Song info ───────────────────────────────────────────────────────────────
+.np-info {
+    min-width: 0; // lets long titles truncate instead of stretching the layout
+    max-width: s(360px);
+}
+
+.np-artist {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+// Long titles wrap onto a second line, then get "…" after that.
+.np-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    line-height: 1.3;
+    font-size: s(19px);
+    font-weight: 600;
+    color: $np-text;
+    transition: color 0.3s ease;
+}
+
+.np-artist {
+    margin-top: s(2px);
+    font-size: s(15px);
+    font-weight: 500;
+    color: $np-muted;
+}
+
+.np-status {
+    display: flex;
+    align-items: center;
+    gap: s(7px);
+    margin-top: s(8px);
+    font-size: s(12px);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: $np-accent;
+}
+
+// Little animated equalizer shown while a song is playing.
+.np-bars {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: s(2px);
+    height: s(11px);
+
+    span {
+        width: s(3px);
+        height: 100%;
+        border-radius: 1px;
+        background: $np-accent;
+        transform-origin: bottom;
+        animation: np-bounce 0.9s ease-in-out infinite;
+
+        &:nth-child(2) { animation-delay: -0.3s; }
+        &:nth-child(3) { animation-delay: -0.6s; }
+    }
+}
+
+@keyframes np-bounce {
+    0%, 100% { transform: scaleY(0.3); }
+    50%      { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .np-vinyl,
+    .np-bars span {
+        animation: none;
+    }
+    .np-bars span {
+        transform: scaleY(0.7);
+    }
+    .np-arm {
+        transition: none;
+    }
+}

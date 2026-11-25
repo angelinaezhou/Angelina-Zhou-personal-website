@@ -1,34 +1,104 @@
-.link {
-    width: 381px;
-    height: 53px;
-    background-color: white;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    color: #7B6E7E;
-    box-shadow: 2px 4px 4px rgba(45, 3, 64, 0.3);
-    transition: all 0.2s ease;
+@use '../scale' as *;
 
-    &:hover {
-        color: #9e89a3;
-        cursor: pointer;
-        box-shadow: 3px 5px 5px rgba(52, 1, 75, 0.3);
-        transform: translateY(-2px);;
+// ─── Look & feel ─────────────────────────────────────────────────────────────
+$link-text: #7B6E7E;
+$link-accent: #927BA4;     // matches the "contact" title
+$link-rest-line: #ddd3e4;  // faint underline shown when not hovered
+$link-shine: #ffffff;      // color of the gleam streak
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    gap: s(14px);
+    color: $link-text;
+    text-decoration: none;
+    outline: none;
+    transition: color 0.3s ease;
+
+    &:hover,
+    &:focus-visible {
+        color: $link-accent;
     }
 }
 
 .leading-icon {
-    width: 25px;
-    height: 25px;
-    margin-left: 15px;
-    padding: 0 6px;
-    position: absolute;
+    width: s(22px);
+    height: s(22px);
+    color: $link-accent;
+    transition: transform 0.3s ease;
+
+    .link:hover &,
+    .link:focus-visible & {
+        transform: translateY(-1px);
+    }
 }
 
 .link-name {
-    font-family: 'Poppins';
-    font-size: 15px;
-    font-weight: 600;
     position: relative;
-    padding-left: 60px;
+    padding-bottom: s(6px);
+    font-family: 'Poppins';
+    font-size: s(17px);
+    font-weight: 600;
+
+    // Resting underline: faint and thin.
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1.5px;
+        border-radius: 2px;
+        background: $link-rest-line;
+    }
+
+    // Hover underline: draws in from the left, then a bright streak sweeps
+    // across it every couple of seconds (the "gleam").
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -0.5px;
+        height: 2.5px;
+        border-radius: 2px;
+        background:
+            linear-gradient(100deg,
+                transparent 40%,
+                rgba($link-shine, 0.95) 50%,
+                transparent 60%) no-repeat,
+            linear-gradient(90deg, #a48fb5, $link-accent 50%, #b9a4c9);
+        background-size: 250% 100%, 100% 100%;
+        background-position: 150% 0, 0 0;
+        box-shadow: 0 0 6px rgba(185, 164, 201, 0.0);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition:
+            transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.45s ease;
+    }
+
+    .link:hover &::after,
+    .link:focus-visible &::after {
+        transform: scaleX(1);
+        box-shadow: 0 0 8px rgba(185, 164, 201, 0.7);
+        animation: link-gleam 2.2s ease-in-out 0.3s infinite;
+    }
+}
+
+// Moves the white streak from right of the line to left of it, then rests.
+@keyframes link-gleam {
+    0%   { background-position: 150% 0, 0 0; }
+    55%  { background-position: -50% 0, 0 0; }
+    100% { background-position: -50% 0, 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .link-name::after {
+        transition: none;
+    }
+    .link:hover .link-name::after,
+    .link:focus-visible .link-name::after {
+        animation: none;
+    }
 }

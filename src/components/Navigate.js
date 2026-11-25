@@ -3,10 +3,14 @@ import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faHome, faUser, faFolderOpen, faPaperPlane } from '@fortawesome/free-solid-svg-icons'; 
+import usePageScale from '../hooks/usePageScale';
 
 const Navigate = () => {
+    // Window-size scale (see src/hooks/usePageScale.js), read by Navigate.scss.
+    const scale = usePageScale();
+
     return (
-    <div className='sidebar'>
+    <div className='sidebar' style={{ '--page-scale': scale }}>
         <div className='nav'>
             <NavLink className="nav-home" to="/">
             <FontAwesomeIcon icon={faHome} className='faHome'/>

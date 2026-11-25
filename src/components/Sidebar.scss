@@ -1,17 +1,48 @@
-// Fix 1: Move hover states to the correct elements and add cursor
+// Grows every blob (and its glow) around its own center, so the blobs'
+// positions stay the same. 1 = original size, 1.1 = 10% bigger, etc.
+$blob-scale: 1;
+
+// Spreads the blobs apart or pulls them together around the cluster's center.
+// 1 = original spacing, 1.1 = 10% further apart, 0.9 = 10% closer together.
+$blob-spacing: 1;
+
+// Center of the cluster (average of the blob centers at spacing 1).
+$spread-cx: 1145px;
+$spread-cy: 385px;
+
+// Each blob's `left`/`top` goes through these, along with its width/height,
+// so the blob's *center* moves away from (or toward) the cluster center.
+// If you change a blob's size, update the size passed in here too.
+@function spread-x($left, $w) {
+    @return $spread-cx + ($left + $w * 0.5 - $spread-cx) * $blob-spacing - $w * 0.5;
+}
+@function spread-y($top, $h) {
+    @return $spread-cy + ($top + $h * 0.5 - $spread-cy) * $blob-spacing - $h * 0.5;
+}
+
 .nav-bar {
-    width: 80px; 
-    height: 100%; 
-    position: absolute; 
-    top: 0; 
-    z-index: 3; 
+    width: 1650px;
+    // --page-scale is set in Home.js from the window size (1 = design size).
+    // The whole cluster scales from its top-right corner, which stays pinned
+    // to the right side of the window.
+    transform: scale(var(--page-scale, 1));
+    transform-origin: top right;
+    right: calc(-200px * var(--page-scale, 1));
+    height: 100%;
+    position: absolute;
+    top: 5%;
+    z-index: 3;
     min-height: 500px;
-    position: fixed;
+    pointer-events: none; // let clicks pass through the empty space
+
+    .nav-about, .nav-projects, .nav-contact, .top-right, .bottom-right {
+        pointer-events: auto;
+    }
 
     .main-nav {
         .nav-about {
-            left: 550px;
-            top: -144px;
+            left: spread-x(550px, 590px);
+            top: spread-y(-144px, 590px);
             position: absolute; 
             z-index: 1; 
             animation: fadeIn 1s linear both;
@@ -19,7 +50,7 @@
 
             .about-link {
                 text-decoration: none; 
-                cursor: pointer; // Add cursor here
+                cursor: pointer;
 
                 .about-icon {
                     clip-path: circle(45% at center);
@@ -28,9 +59,10 @@
                     align-items: center; 
                     justify-content: center;
                     width: 590px; 
-                    height: 590px; 
-                    z-index: 1; 
-                    cursor: pointer; // Add cursor here too
+                    height: 590px;
+                    transform: scale($blob-scale);
+                    z-index: 1;
+                    cursor: pointer;
 
                     .about, .about-glow {
                         position: absolute; 
@@ -63,7 +95,6 @@
                     }
                 }
 
-                // Move hover state to the link level
                 &:hover {
                     .about-icon .about-glow {
                         opacity: 1;
@@ -73,15 +104,15 @@
         }
 
         .nav-projects {
-            left: 610px; 
-            top: 300px; 
+            left: spread-x(610px, 620px);
+            top: spread-y(300px, 600px);
             position: absolute; 
             animation: fadeIn 1s linear both;
             animation-delay: 0.7s;
 
             .projects-link {
                 text-decoration: none;
-                cursor: pointer; // Add cursor
+                cursor: pointer;
 
                 .projects-icon {
                     clip-path: circle(40% at center);
@@ -90,7 +121,8 @@
                     justify-content: center;
                     align-items: center;
                     width: 620px; 
-                    height: 600px; 
+                    height: 600px;
+                    transform: scale($blob-scale);
                     cursor: pointer; // Add cursor
 
                     .projects-blob, .projects-glow {
@@ -134,8 +166,8 @@
         }
 
         .nav-contact {
-            left: 1010px; 
-            top: 100px; 
+            left: spread-x(1010px, 600px);
+            top: spread-y(100px, 600px);
             position: absolute;
             animation: fadeIn 1s linear both;
             animation-delay: 0.6s;
@@ -152,7 +184,8 @@
                     justify-content: center;
                     align-items: center;
                     width: 600px; 
-                    height: 600px; 
+                    height: 600px;
+                    transform: scale($blob-scale);
                     cursor: pointer; // Add cursor
                 }
 
@@ -200,9 +233,9 @@
 // Keep the decorative blobs unchanged
 .top-right {
     position: absolute;
-    left: 980px; 
-    width: 640px; 
-    top: -378px;
+    left: spread-x(980px, 640px);
+    width: 640px;
+    top: spread-y(-378px, 640px);
     animation: fadeIn 1s linear both;
     animation-delay: 0.4s;
     
@@ -211,6 +244,7 @@
         position: absolute; 
         width: 100%;
         display: block;
+        transform: scale($blob-scale);
         transition: opacity 0.3s ease-in-out;
     }
 
@@ -233,10 +267,10 @@
 
 .bottom-right {
     position: absolute; 
-    left: 1050px; 
-    width: 600px; 
+    left: spread-x(1050px, 600px);
+    width: 600px;
     height: auto;
-    top: 530px; 
+    top: spread-y(530px, 600px);
     animation: fadeIn 1s linear both;
     animation-delay: 0.8s;
 
@@ -245,7 +279,7 @@
         position: absolute; 
         width: 100%; 
         display: block;
-        transform: rotate(20deg);
+        transform: rotate(20deg) scale($blob-scale);
         transition: opacity 0.3s ease-in-out; 
     }
 
