@@ -1,5 +1,4 @@
 import './Contact.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faFile } from '@fortawesome/free-solid-svg-icons';
 import Link from './Link';
